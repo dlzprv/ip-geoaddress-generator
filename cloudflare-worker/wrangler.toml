@@ -1,0 +1,10 @@
+name = "email-worker"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "DB"
+id = "c3697725648c4976bca617b5e73a0c20"
+
+[vars]
+ENVIRONMENT = "production"
