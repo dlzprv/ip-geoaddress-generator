@@ -18,6 +18,7 @@ import { Toast } from "./components/Toast";
 import { Header } from "./components/Header";
 import { LeftCard } from "./components/LeftCard";
 import { RightCard } from "./components/RightCard";
+import { CustomEmailForm } from "./components/CustomEmailForm";
 
 import { effect } from "@preact/signals-react";
 import { addressService } from "@/services/addressService";
@@ -74,9 +75,15 @@ export default function Home() {
     messages,
     selectedMessage,
     toastMessage,
+    domains,
+    customUsername,
+    selectedDomain,
     setSelectedMessage,
     setToastMessage,
     handleMessageClick,
+    setCustomUsername,
+    setSelectedDomain,
+    createCustomEmail,
   } = useMail();
   const [inboxOpen, setInboxOpen] = useState(false);
   // 计算总的加载状态
@@ -224,6 +231,16 @@ export default function Home() {
           ipLoading={ipLoading}
           ipError={ipError}
           detectedIp={detectedIpSignal.value}
+        />
+
+        <CustomEmailForm
+          domains={domains}
+          customUsername={customUsername}
+          selectedDomain={selectedDomain}
+          emailLoading={emailLoading}
+          onUsernameChange={setCustomUsername}
+          onDomainChange={setSelectedDomain}
+          onCreateEmail={createCustomEmail}
         />
 
         {userError && <Text color="red">获取用户信息失败</Text>}
